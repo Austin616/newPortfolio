@@ -1,0 +1,106 @@
+@keyframes landing {
+    0% {
+      transform: translateY(-100%); /* Start above the screen */
+      opacity: 0; /* Start invisible */
+    }
+    70% {
+      transform: translateY(30px); /* Overshoot landing position */
+      opacity: 1; /* Fully visible */
+    }
+    100% {
+      transform: translateY(0); /* Final position */
+    }
+  }
+  
+  @keyframes oscillate {
+    /* Oscillate between -5 and 5 degrees */
+    0%,
+    100% {
+      transform: rotate(-2.5deg);
+    }
+    50% {
+      transform: rotate(2.5deg);
+    }
+  }
+  
+  .aboutme {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    padding: 20px;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .about-me-title {
+    font-size: 5rem; /* Larger font size for the title */
+    color: #d1c7b3; /* Title color */
+    margin-bottom: 20px; /* Space below title */
+    animation: landing 1s ease-out forwards, oscillate 4s ease-in-out infinite 1s; /* Landing followed by oscillation */
+  }
+  
+  .aboutme_content {
+    max-width: 600px; /* Limit content width */
+    text-align: center; /* Center text in content */
+    margin-bottom: 20px; /* Space below content */
+  }
+  
+  .aboutme_content p {
+    font-size: 1.2rem; /* Font size for the paragraph */
+    color: #968b74; /* Paragraph text color */
+    line-height: 1.5; /* Spacing between lines */
+  }
+  
+  .aboutme_links {
+    display: flex; /* Use flexbox to arrange icons */
+    justify-content: center; /* Center links */
+    gap: 20px; /* Space between icons */
+  }
+  
+  .aboutme_links a {
+    color: #968b74; /* Icon color */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .aboutme_links a:hover {
+    color: #d1c7b3; /* Darker shade on hover */
+  }
+  
+  /* Hide elements when the hamburger menu is active */
+  body.hamburger-active .about-me-title.hidden {
+    display: none; /* Hide title when hamburger is active */
+  }
+  
+  /* Media Queries for Responsive Design */
+  @media (max-width: 768px) {
+    .about-me-title {
+      font-size: 3rem; /* Reduce title font size for smaller screens */
+    }
+  
+    .aboutme_content p {
+      font-size: 1rem; /* Reduce paragraph font size */
+    }
+  
+    .aboutme {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-me-title {
+      font-size: 2.5rem; /* Further reduce title font size */
+    }
+  
+    .aboutme_content {
+      padding: 0 10px; /* Add horizontal padding for smaller screens */
+    }
+  
+    .aboutme_content p {
+      font-size: 0.9rem; /* Further reduce paragraph font size */
+    }
+  
+    .aboutme_links {
+      gap: 15px; /* Reduce gap between icons */
+    }
+  }
+  

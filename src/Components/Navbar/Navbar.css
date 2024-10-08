@@ -1,0 +1,196 @@
+/* Hamburger menu  */
+/* Navbar Style Start */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: "Roboto", sans-serif;
+  -moz-osx-font-smoothing: "Roboto", sans-serif;
+  font-style: normal;
+  padding: 100px 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.title-navbar {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #968b74; /* Default color */
+  position: relative; /* For pseudo-element positioning */
+  transition: color 0.3s ease; /* Smooth color transition */
+  font-size: 40px;
+}
+
+.title-navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px; /* Adjust the position of the underline */
+  height: 2px; /* Thickness of the underline */
+  background-color: #968b74;
+  transition: opacity 0.3s ease; /* Smooth transition */
+  opacity: 1; /* Keep it visible */
+}
+
+.title-navbar:hover {
+  color: #d1c7b3; /* Hover color for navbar title */
+}
+
+.title-navbar:hover::after {
+  opacity: 0; /* Hide underline on hover */
+}
+
+/* Hide elements when the hamburger menu is active */
+body.hamburger-active .title-navbar,
+body.hamburger-active .about-me-title {
+  display: none; /* Hide navbar title and about me title */
+}
+
+.navbar--items > ul {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 42.667px;
+  text-decoration: none;
+}
+
+.navbar--items ul > li > a {
+  text-decoration: none;
+  position: relative; /* For pseudo-element positioning */
+}
+
+/* Navbar Content */
+.navbar--content {
+  color: #968b74; /* Default color */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.navbar--content:hover {
+  color: #d1c7b3; /* Hover color */
+}
+
+.navbar--content::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px; /* Adjust the position of the underline */
+  height: 2px; /* Thickness of the underline */
+  background-color: #d1c7b3; /* Underline color */
+  transition: transform 0.3s ease; /* Animation effect */
+  transform: scaleX(0); /* Initial state (hidden) */
+}
+
+.navbar--content:hover::after {
+  transform: scaleX(1); /* Reveal underline on hover */
+}
+
+.navbar--active-content {
+  color: red;
+  font-weight: 600;
+}
+
+.nav__hamburger {
+  display: none;
+  width: 1.875rem;
+  height: 1.313rem;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.nav__hamburger__line {
+  display: block;
+  height: 0.188rem;
+  width: 100%;
+  background-color: #000000;
+  border-radius: 0.625rem;
+  transition: all ease-in-out 0.2s;
+}
+
+@media screen and (max-width: 1200px) {
+  .nav__hamburger {
+    display: flex;
+    z-index: 200;
+  }
+  .navbar--items {
+    display: flex;
+  }
+  .navbar--items {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255);
+    top: -20rem;
+    left: 0;
+    width: 100%;
+    transition: all ease-in-out 0.4s;
+  }
+  .navbar--items ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 3rem 0 0.6rem;
+    z-index: -100;
+  }
+  .navbar--items ul li {
+    text-align: center;
+  }
+  .navbar--items ul li a {
+    padding: 0.5rem;
+    color: #968b74; /* Default color for dropdown items */
+    position: relative; /* For pseudo-element positioning */
+    transition: color 0.3s ease; /* Smooth color transition for dropdown items */
+  }
+  .navbar--items ul li a:hover {
+    color: #d1c7b3; /* Hover color for dropdown items */
+  }
+  .navbar--items ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px; /* Adjust the position of the underline */
+    height: 2px; /* Thickness of the underline */
+    background-color: #d1c7b3; /* Underline color */
+    transition: transform 0.3s ease; /* Animation effect */
+    transform: scaleX(0); /* Initial state (hidden) */
+  }
+  .navbar--items ul li a:hover::after {
+    transform: scaleX(1); /* Reveal underline on hover */
+  }
+  .navbar--items {
+    z-index: -1000;
+  }
+  .navbar--items.active {
+    top: 30px;
+  }
+  .nav__hamburger.active :nth-child(1) {
+    transform: rotate(45deg) translate(0.45rem, 0.1875rem);
+  }
+
+  .nav__hamburger.active :nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav__hamburger.active :nth-child(3) {
+    transform: rotate(-45deg) translate(0.45rem, -0.1875rem);
+  }
+}
